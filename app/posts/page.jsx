@@ -2,7 +2,7 @@ import PostCard from "../components/PostCard";
 import Link from "next/link";
 
 export default async function PostsPage() {
-  // Fetch directly from JSONPlaceholder to avoid localhost issues during build
+  
   const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=5", {
     next: { revalidate: 60 }, // ISR: revalidate every 60 seconds
   });

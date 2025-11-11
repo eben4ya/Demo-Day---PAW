@@ -13,11 +13,21 @@ export async function GET(request) {
   }
 
   try {
+    // Get API key from server-side environment variable
+    const apiKey = process.env.OPENWEATHER_API_KEY || process.env.NEXT_PUBLIC_W_API;
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { error: "API key not configured" },
+        { status: 500 }
+      );
+    }
+
     // Fetch data dari OpenWeather API
     const response = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
         city
-      )}&appid=${process.env.NEXT_PUBLIC_W_API}&units=metric`
+      )}&appid=${apiKey}&units=metric`
     );
 
     if (!response.ok) {
