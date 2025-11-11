@@ -2,6 +2,10 @@
 
 Demo application for Pengembangan Aplikasi Web course.
 
+## Live Demo
+
+🚀 **[View Live Demo](https://demo-day-paw.vercel.app/)**
+
 ## Features
 - Blog posts listing with SSR
 - Weather app with form validation
