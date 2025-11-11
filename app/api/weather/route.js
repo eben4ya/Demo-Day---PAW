@@ -14,7 +14,7 @@ export async function GET(request) {
 
   try {
     // Get API key from server-side environment variable
-    const apiKey = process.env.OPENWEATHER_API_KEY || process.env.NEXT_PUBLIC_W_API;
+    const apiKey = process.env.W_API;
 
     if (!apiKey) {
       return NextResponse.json(
