@@ -21,15 +21,18 @@ export default function WeatherPage() {
     setLoading(true);
 
     try {
+      // Panggil API route internal
       const res = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(
-          city
-        )}&appid=${process.env.NEXT_PUBLIC_W_API}&units=metric`
+        `/api/weather?city=${encodeURIComponent(city)}`
       );
 
-      if (!res.ok) throw new Error("Kota tidak ditemukan");
+      const json = await res.json();
 
-      setData(await res.json());
+      if (!res.ok) {
+        throw new Error(json.error || "Terjadi kesalahan");
+      }
+
+      setData(json);
     } catch (err) {
       setError(err.message);
     } finally {
